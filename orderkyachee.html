@@ -1,143 +1,274 @@
 <!DOCTYPE html>
 <html lang="ml">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/vC8zXkYv/8bdef540-3dd4-4e14-a286-50fda186c916.jpg">
-    <title>Order Now | Kyachee Snaxx Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root { --primary: #ffcc00; --accent: #d32f2f; --dark: #1a1a1a; --bg: #f8f9fa; }
-        body { font-family: 'Poppins', sans-serif; margin: 0; background: var(--bg); color: var(--dark); position: relative;}
-        header { background: var(--primary); padding: 40px 20px; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); }
-        header h1 { font-family: 'Montserrat', sans-serif; font-size: 3.5rem; margin: 0; text-transform: uppercase; }
-        .snack-icon {
-    height: 4em;       /* font size pole */
-    width: auto;
-    vertical-align: middle;
-    margin-right: 8px;
-    border-radius: 5px;
-}
-.back-btn {
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    background: var(--dark);
-    color: var(--primary);
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    display: inline-block;   /* 👈 important */
-    width: auto;             /* 👈 prevent full width */
-    .back-btn {
-    transition: 0.2s;
-}
-    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/jpeg" href="https://i.ibb.co/vC8zXkYv/8bdef540-3dd4-4e14-a286-50fda186c916.jpg">
+
+<title>Order Now | Kyachee Snaxx Premium</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --primary:#ffcc00;
+    --accent:#d32f2f;
+    --dark:#1a1a1a;
+    --bg:#f8f9fa;
 }
 
-.back-btn:hover {
-    background: red;
+body{
+    font-family:'Poppins',sans-serif;
+    margin:0;
+    background:var(--bg);
+    color:var(--dark);
+    position:relative;
+}
+
+header{
+    background:var(--primary);
+    padding:40px 20px;
+    text-align:center;
+    clip-path:polygon(0 0,100% 0,100% 85%,0% 100%);
+}
+
+header h1{
+    font-family:'Montserrat',sans-serif;
+    font-size:3.5rem;
+    margin:0;
+    text-transform:uppercase;
+}
+
+.snack-icon{
+    height:4em;
+    width:auto;
+    vertical-align:middle;
+    margin-right:8px;
+    border-radius:5px;
+}
+
+.back-btn{
+    position:absolute;
+    top:10px;
+    left:20px;
+    background:var(--dark);
+    color:var(--primary);
+    border:none;
+    padding:8px 16px;
+    border-radius:20px;
+    font-size:0.8rem;
+    font-weight:600;
+    cursor:pointer;
+    display:inline-block;
+    width:auto;
+    transition:0.2s;
+}
+
+.back-btn:hover{
+    background:red;
     color:white;
 }
-.back-btn:active {
+
+.back-btn:active{
     background:red;
-    color: white;
-    transform: scale(0.95); /* small press effect 😎 */
+    color:white;
+    transform:scale(0.95);
 }
 
+.order-container{
+    max-width:500px;
+    margin:50px auto;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.1);
+}
 
-        .order-container { max-width: 500px; margin: 50px auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        label { font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 5px; color: #555; }
-        input, textarea { width: 100%; padding: 12px 15px; margin-bottom: 20px; border: 2px solid #eee; border-radius: 10px; box-sizing: border-box; font-family: 'Poppins'; }
-        .readonly-box { background: #f0f0f0; cursor: not-allowed; }
-        button { background: var(--dark); color: var(--primary); padding: 15px; border: none; width: 100%; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
-        button:hover { background: var(--accent); color: white; }
-        footer { text-align: center; padding: 30px; background: var(--dark); color: #666; font-size: 0.8rem; margin-top: 50px; }
-    </style>
+label{
+    font-size:0.85rem;
+    font-weight:600;
+    display:block;
+    margin-bottom:5px;
+    color:#555;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:12px 15px;
+    margin-bottom:20px;
+    border:2px solid #eee;
+    border-radius:10px;
+    box-sizing:border-box;
+    font-family:'Poppins';
+}
+
+.readonly-box{
+    background:#f0f0f0;
+    cursor:not-allowed;
+}
+
+button.submit-btn{
+    background:var(--dark);
+    color:var(--primary);
+    padding:15px;
+    border:none;
+    width:100%;
+    border-radius:10px;
+    font-size:1rem;
+    font-weight:700;
+    cursor:pointer;
+    text-transform:uppercase;
+    transition:0.3s;
+}
+
+button.submit-btn:hover{
+    background:var(--accent);
+    color:white;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    background:var(--dark);
+    color:#666;
+    font-size:0.8rem;
+    margin-top:50px;
+}
+
+</style>
 </head>
+
 <body>
 
 <header>
-    <button onclick="history.back()" class="back-btn">← Back</button>
-    <h1>Kyachee</h1>
-    <h2>snaxx</h2>   
-    <p>"Fun to say, better to eat"</p>
-</header>
-   <button onclick="history.back()" class="back-btn">← Back</button>
 
+<button onclick="history.back()" class="back-btn">
+← Back
+</button>
+
+<h1>Kyachee</h1>
+<h2>snaxx</h2>
+
+<p>"Fun to say, better to eat"</p>
+
+</header>
 
 <div class="order-container">
-    <h2>
-        <img src="https://i.ibb.co/7JZ7QSHb/b01492d9-eadd-4772-a7ee-32fd867b9a66-removebg-preview.png" class="snack-icon">
-        Secure Checkout
-    </h2>   
 
-    <form id="orderForm" action="https://sheetdb.io/api/v1/be9xtu4xsctpk" method="POST">
-        <label>Full Name</label>
-        <input type="text" name="data[Name]" placeholder="Your Name" required>
+<h2>
+<img src="https://i.ibb.co/7JZ7QSHb/b01492d9-eadd-4772-a7ee-32fd867b9a66-removebg-preview.png" class="snack-icon">
+Secure Checkout
+</h2>
 
-        <label>Phone Number</label>
-        <input type="text" name="data[Phone]" placeholder="Contact Number" required>
+<form id="orderForm">
 
-        <label>Delivery Address</label>
-        <textarea name="data[Address]" rows="3" placeholder="Flat No, Street, Landmark, Pin" required></textarea>
+<label>Full Name</label>
+<input type="text" id="name" placeholder="Your Name" required>
 
-        <label>Items in Your Cart</label>
-        <!-- ഇവിടേക്കാണ് എല്ലാ ഐറ്റങ്ങളും വരുന്നത് -->
-        <textarea name="data[Product]" id="productList" rows="3" class="readonly-box" readonly></textarea>
+<label>WhatsApp Number</label>
+<input type="text" id="phone" placeholder="Contact Number" required>
 
-        <label>Total Amount (₹)</label>
-        <input type="text" name="data[Total]" id="totalDisplay" class="readonly-box" readonly>
+<label>Delivery Address</label>
+<textarea id="address" rows="3" placeholder="Flat No, Street, Landmark, Pin" required></textarea>
 
-        <button type="submit">Confirm Your Order</button>
-    </form>
+<label>Items in Your Cart</label>
+<textarea id="productList" rows="3" class="readonly-box" readonly></textarea>
+
+<label>Total Amount (₹)</label>
+<input type="text" id="totalDisplay" class="readonly-box" readonly>
+
+<button type="submit" class="submit-btn">
+Confirm Your Order
+</button>
+
+</form>
+
 </div>
 
 <script>
-window.onload = function() {
-    // കാർട്ടിൽ നിന്ന് സേവ് ചെയ്ത വിവരങ്ങൾ എടുക്കുന്നു
+
+window.onload = function(){
+
     let summary = localStorage.getItem("fullOrderSummary");
     let total = localStorage.getItem("totalOrderAmount");
-    
-    if(summary) {
+
+    if(summary){
+
         document.getElementById("productList").value = summary;
         document.getElementById("totalDisplay").value = total;
-    } else {
-        // കാർട്ടിൽ ഒന്നുമില്ലെങ്കിൽ തിരികെ വിടുന്നു
+
+    }else{
+
         alert("Please add items to cart first!");
-        window.location.href = "cartOFFICIAL.html";
+        window.location.href = "cart.html";
+
     }
+
 };
 
 document.getElementById("orderForm").addEventListener("submit", function(e){
+
     e.preventDefault();
-    const btn = this.querySelector("button");
-    btn.innerHTML = "Processing...";
+
+    const btn = document.querySelector(".submit-btn");
+
+    btn.innerHTML = "Opening WhatsApp...";
     btn.disabled = true;
 
-    fetch(this.action, {
-        method: "POST",
-        body: new FormData(this)
-    })
-    .then(res => res.json())
-    .then(data => {
-        // ഓർഡർ കഴിഞ്ഞാൽ കാർട്ടും സെലക്ട് ചെയ്ത ഡാറ്റയും ക്ലിയർ ചെയ്യുന്നു
-        localStorage.removeItem("cart");
-        localStorage.removeItem("fullOrderSummary");
-        localStorage.removeItem("totalOrderAmount");
-        window.location.href = "thanks.html";
-    })
-    .catch(err => {
-        alert("Submission Failed ❌");
-        btn.innerHTML = "Confirm Your Order";
-        btn.disabled = false;
-    });
+    // CUSTOMER DETAILS
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let address = document.getElementById("address").value;
+    let products = document.getElementById("productList").value;
+    let total = document.getElementById("totalDisplay").value;
+
+    // YOUR WHATSAPP NUMBER
+    // COUNTRY CODE INCLUDED
+    // Example: 919876543210
+
+    let ownerNumber = "919495603617";
+
+    // MESSAGE
+    let message =
+`🛒 *NEW ORDER - KYACHEE SNAXX*
+
+👤 Name: ${name}
+
+📞 Phone: ${phone}
+
+🏠 Address:
+${address}
+
+🧾 Ordered Items:
+${products}
+
+💰 Total Amount: ₹${total}`;
+
+    // ENCODE MESSAGE
+    let encodedMessage = encodeURIComponent(message);
+
+    // WHATSAPP LINK
+    let whatsappURL =
+`https://wa.me/${ownerNumber}?text=${encodedMessage}`;
+
+    // CLEAR CART
+    localStorage.removeItem("cart");
+    localStorage.removeItem("fullOrderSummary");
+    localStorage.removeItem("totalOrderAmount");
+
+    // OPEN WHATSAPP
+    window.location.href = whatsappURL;
+
 });
+
 </script>
 
-<footer>&copy; 2026 Kyachee Snaxx. Premium Quality Kerala Snacks.</footer>
+<footer>
+&copy; 2026 Kyachee Snaxx. Premium Quality Kerala Snacks.
+</footer>
+
 </body>
 </html>
