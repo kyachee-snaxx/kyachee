@@ -8,134 +8,240 @@
 
 <title>Order Now | Kyachee Snaxx Premium</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
-    --primary:#ffcc00;
-    --accent:#d32f2f;
-    --dark:#1a1a1a;
-    --bg:#f8f9fa;
+    --primary-gradient: linear-gradient(135deg, #ffcc00 0%, #ff5252 100%);
+    --premium-gold: linear-gradient(135deg, #ffe066 0%, #f5b041 50%, #d4ac0d 100%);
+    --gold-hover: linear-gradient(135deg, #ffd433 0%, #f39c12 100%);
+    --secondary-light-red: #ff7675;
+    --dark-color: #0f0f11;
+    --white: #ffffff;
+    --glass-border: rgba(255, 255, 255, 0.25);
+    --luxury-shadow: 0 15px 35px rgba(0, 0, 0, 0.06), 0 5px 15px rgba(0, 0, 0, 0.04);
 }
 
 body{
-    font-family:'Poppins',sans-serif;
+    font-family: 'Outfit', 'Poppins', sans-serif;
     margin:0;
-    background:var(--bg);
-    color:var(--dark);
+    background: linear-gradient(180deg, #fffbf0 0%, #fff3f3 50%, #fffcf5 100%);
+    color: var(--dark-color);
     position:relative;
+    min-height: 100vh;
 }
 
+/* Soft background glow effects */
+body::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: -5%;
+    width: 350px;
+    height: 350px;
+    background: #ff5252;
+    filter: blur(130px);
+    opacity: 0.1;
+    z-index: -1;
+    border-radius: 50%;
+}
+
+/* --- GLASSMORPHISM HEADER --- */
 header{
-    background:var(--primary);
-    padding:40px 20px;
+    background: linear-gradient(135deg, rgba(255, 204, 0, 0.2), rgba(255, 82, 82, 0.15));
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 50px 20px;
     text-align:center;
-    clip-path:polygon(0 0,100% 0,100% 85%,0% 100%);
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
 }
 
 header h1{
-    font-family:'Montserrat',sans-serif;
-    font-size:3.5rem;
+    font-size: 3.8rem;
     margin:0;
     text-transform:uppercase;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #222 30%, #ff5252 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.snack-icon{
-    height:4em;
-    width:auto;
-    vertical-align:middle;
-    margin-right:8px;
-    border-radius:5px;
+header h2 {
+    margin: -10px 0 15px 0;
+    color: var(--secondary-light-red);
+    font-size: 1.8rem;
+    text-transform: lowercase;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+header p {
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: #444;
+    margin: 0;
 }
 
 .back-btn{
     position:absolute;
-    top:10px;
+    top: 30px;
     left:20px;
-    background:var(--dark);
-    color:var(--primary);
+    background: var(--dark-color);
+    color: #ffcc00;
     border:none;
-    padding:8px 16px;
-    border-radius:20px;
-    font-size:0.8rem;
-    font-weight:600;
+    padding: 10px 22px;
+    border-radius:50px;
+    font-size:0.85rem;
+    font-weight:700;
     cursor:pointer;
-    display:inline-block;
-    width:auto;
-    transition:0.2s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 .back-btn:hover{
-    background:red;
-    color:white;
+    background: var(--secondary-light-red);
+    color: white;
+    transform: translateX(-3px);
 }
 
 .back-btn:active{
-    background:red;
-    color:white;
     transform:scale(0.95);
 }
 
+/* Floating Premium Order Container */
 .order-container{
-    max-width:500px;
-    margin:50px auto;
-    background:white;
-    padding:40px;
-    border-radius:20px;
-    box-shadow:0 15px 35px rgba(0,0,0,0.1);
+    max-width:480px;
+    margin: 50px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: var(--luxury-shadow);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    box-sizing: border-box;
+}
+
+.order-container h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #111;
+}
+
+/* --- IMAGE SIZE INCREASED FOR DESKTOP --- */
+.snack-icon{
+    height: 9.5rem; 
+    width:auto;
+    object-fit: contain;
 }
 
 label{
     font-size:0.85rem;
-    font-weight:600;
+    font-weight:700;
     display:block;
-    margin-bottom:5px;
-    color:#555;
+    margin-bottom: 8px;
+    color:#444;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 input,
 textarea{
     width:100%;
-    padding:12px 15px;
-    margin-bottom:20px;
-    border:2px solid #eee;
-    border-radius:10px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    border: 1.5px solid #eee;
+    border-radius: 14px;
     box-sizing:border-box;
-    font-family:'Poppins';
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: #fafafa;
+}
+
+/* Soft light-red accents on focus */
+input:focus,
+textarea:focus{
+    outline: none;
+    border-color: var(--secondary-light-red);
+    background: #fff;
+    box-shadow: 0 0 10px rgba(255, 118, 117, 0.1);
 }
 
 .readonly-box{
-    background:#f0f0f0;
-    cursor:not-allowed;
+    background: #f7f7f9;
+    color: #555;
+    font-weight: 600;
+    cursor: not-allowed;
+    border-color: #f1f1f1;
 }
 
+/* Premium Golden Button */
 button.submit-btn{
-    background:var(--dark);
-    color:var(--primary);
-    padding:15px;
+    background: var(--premium-gold);
+    color: #4a3300;
+    padding: 18px;
     border:none;
     width:100%;
-    border-radius:10px;
-    font-size:1rem;
-    font-weight:700;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 800;
     cursor:pointer;
     text-transform:uppercase;
-    transition:0.3s;
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 20px rgba(212, 172, 13, 0.25);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    margin-top: 10px;
 }
 
 button.submit-btn:hover{
-    background:var(--accent);
-    color:white;
+    background: var(--dark-color);
+    color: #ffcc00;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(15, 15, 17, 0.25);
+}
+
+button.submit-btn:disabled {
+    background: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
 }
 
 footer{
     text-align:center;
-    padding:30px;
-    background:var(--dark);
-    color:#666;
-    font-size:0.8rem;
-    margin-top:50px;
+    padding:40px 20px;
+    background: var(--dark-color);
+    color:#777;
+    font-size:0.85rem;
+    margin-top: 80px;
+    border-top: 1px solid rgba(255,255,255,0.02);
+}
+
+/* Responsive optimization */
+@media (max-width: 768px) {
+    header { padding: 40px 16px; }
+    header h1 { font-size: 3rem; }
+    .back-btn { position: static; display: inline-block; margin: 15px 0 0 20px; padding: 8px 18px; }
+    .order-container { width: 92%; margin: 30px auto; padding: 25px; border-radius: 20px; }
+}
+
+@media (max-width: 480px) {
+    header h1 { font-size: 2.5rem; }
+    .order-container { padding: 20px; }
+    .snack-icon { height: 5.5rem; } /* Mobile responsive height adjustment */
+    input, textarea { padding: 12px 14px; margin-bottom: 18px; font-size: 0.9rem; }
+    button.submit-btn { font-size: 1rem; padding: 15px; }
 }
 
 </style>
@@ -226,9 +332,6 @@ document.getElementById("orderForm").addEventListener("submit", function(e){
     let total = document.getElementById("totalDisplay").value;
 
     // YOUR WHATSAPP NUMBER
-    // COUNTRY CODE INCLUDED
-    // Example: 919876543210
-
     let ownerNumber = "919495603617";
 
     // MESSAGE
