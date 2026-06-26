@@ -30,6 +30,56 @@
             line-height: 1.6;
         }
 
+        /* --- BLUR EFFECT FOR MAIN CONTENT --- */
+        #main-content {
+            filter: blur(8px);
+            transition: filter 0.6s ease;
+        }
+
+        /* --- SPLASH SCREEN STYLES --- */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.4); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .splash-logo {
+            width: 280px;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            animation: popIn 1.5s ease-in-out forwards;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .splash-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* --- EXISTING STYLES --- */
         header { 
             background: var(--primary-color); 
             padding: 50px 20px; 
@@ -136,183 +186,229 @@
             padding: 60px 20px; 
             text-align: center; 
         }
-        /* Place Order ബട്ടണിനുള്ള പ്രത്യേക സ്റ്റൈൽ */
-.place-order-wrapper {
-    text-align: center;
-    margin: 50px 0; /* മുകളിലും താഴെയും കുറച്ച് സ്പേസ് */
-}
 
-.order-now-btn {
-    background-color:red; /* റെഡ് കളർ കൂടുതൽ എടുത്ത് നിൽക്കും */
-    color: white;
-    padding: 18px 50px;
-    font-size: 1.3rem;
-    font-weight: bold;
-    text-decoration: none;
-    text-transform: uppercase;
-    border-radius: 50px; /* ബോർഡർ റൗണ്ട് ആക്കി */
-    box-shadow: 0 4px 15px rgba(185, 3, 3, 0.3);
-    transition: all 0.3s ease;
-    display: inline-block;
-    border: none;
-    cursor: pointer;
-}
+        .place-order-wrapper {
+            text-align: center;
+            margin: 50px 0; 
+        }
 
-.order-now-btn:hover {
-    background-color: var(--dark-color);
-    transform: translateY(-3px); /* മുകളിലേക്ക് അല്പം ഉയർന്നു നിൽക്കാൻ */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-    color: var(--primary-color);
-}
+        .order-now-btn {
+            background-color: red; 
+            color: white;
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
+            border-radius: 50px; 
+            box-shadow: 0 4px 15px rgba(185, 3, 3, 0.3);
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
 
+        .order-now-btn:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px); 
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            color: var(--primary-color);
+        }
+
+        /* --- MOBILE RESPONSIVE STYLES (UPDATED FOR SMALLER CARD SIZE) --- */
         @media (max-width: 600px) {
             header h1 { font-size: 3rem; }
+            .splash-logo { width: 220px; }
+            
+            /* പ്രൊഡക്റ്റ് കണ്ടെയ്നർ ഗ്യാപ്പ് കുറച്ചു */
+            .products { padding: 20px 10px; }
             .product-container { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .product-img { height: 180px; }
+            
+            /* കാർഡിന്റെ പാഡിങ്, ടെക്സ്റ്റ് സൈസ് കുറച്ചു */
+            .product-card { padding: 8px; border-radius: 8px; }
+            .product-card h3 { font-size: 1rem; margin: 5px 0; }
+            .product-card .price { font-size: 0.9rem; margin: 5px 0; }
+            
+            /* ഇമേജ് ഹൈറ്റ് ക്രമീകരിച്ചു */
+            .product-img { height: 140px; margin-bottom: 8px; border-radius: 6px; }
+            
+            /* ക്വാണ്ടിറ്റി കൺട്രോളുകൾ ചെറുതാക്കി */
+            .qty-controls { gap: 8px; margin: 8px 0; }
+            .qty-btn { width: 24px; height: 24px; font-size: 0.8rem; }
+            .qty-controls span { font-size: 0.9rem; }
+            
+            /* ബട്ടൺ പാഡിങ് കുറച്ചു */
+            .order-btn { padding: 8px 10px; font-size: 0.85rem; border-radius: 4px; }
+            .order-now-btn { padding: 12px 30px; font-size: 1rem; }
         }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>Kyachee</h1>
-        <h2>snaxx</h2>
-        <p>"പറയാൻ രസം, കഴിക്കാൻ അതിലേറെ രസം"</p>
-    </header>
+    <!-- Splash Screen Layer -->
+    <div id="splash-screen">
+        <img src="logo2.png" alt="Kyachee Snaxx Logo" class="splash-logo">
+    </div>
 
-    <nav>
-        <a href="#products">Products</a>
-        <a href="#contact">Contact</a>
-        <a href="cart.html">Cart 🛒</a>
-    </nav>
+    <!-- Main Website Content -->
+    <div id="main-content">
+        <header>
+            <h1>Kyachee</h1>
+            <h2>snaxx</h2>
+            <p>"പറയാൻ രസം, കഴിക്കാൻ അതിലേറെ രസം"</p>
+        </header>
 
-    <section class="products" id="products">
-        <div class="product-container">
+        <nav>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+            <a href="cart.html">Cart 🛒</a>
+        </nav>
 
-            <!-- Product 1: Murukku -->
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://i.ibb.co/RpFxkTZK/69c9fb98-c69a-4354-bb20-78a7ab9bccf1-r1-c1.jpg" alt="Murukku">
+        <section class="products" id="products">
+            <div class="product-container">
+
+                <!-- Product 1: Murukku -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.ibb.co/RpFxkTZK/69c9fb98-c69a-4354-bb20-78a7ab9bccf1-r1-c1.jpg" alt="Murukku">
+                    </div>
+                    <h3>Murukku</h3>
+                    <p class="price">₹150/kg</p>
+                    <div class="qty-controls">
+                        <button class="qty-btn" onclick="changeQty('Murukku', -1)">-</button>
+                        <span id="qty-Murukku">5</span>
+                        <button class="qty-btn" onclick="changeQty('Murukku', 1)">+</button>
+                    </div>
+                   <button onclick="addToCart('Murukku',150,'Murukku','https://i.ibb.co/RpFxkTZK/69c9fb98-c69a-4354-bb20-78a7ab9bccf1-r1-c1.jpg')" class="order-btn">Add to Cart</button>
                 </div>
-                <h3>Murukku</h3>
-                <p class="price">₹150/kg</p>
-                <div class="qty-controls">
-                    <button class="qty-btn" onclick="changeQty('Murukku', -1)">-</button>
-                    <span id="qty-Murukku">1</span>
-                    <button class="qty-btn" onclick="changeQty('Murukku', 1)">+</button>
+
+                <!-- Product 2: Banana Chips -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.ibb.co/Zp47rMKM/69c9fb98-c69a-4354-bb20-78a7ab9bccf1-r1-c2.jpg" alt="Banana Chips">
+                    </div>
+                    <h3>Banana Chips</h3>
+                    <p class="price">₹150/kg</p>
+                    <div class="qty-controls">
+                        <button class="qty-btn" onclick="changeQty('BananaChips', -1)">-</button>
+                        <span id="qty-BananaChips">5</span>
+                        <button class="qty-btn" onclick="changeQty('BananaChips', 1)">+</button>
+                    </div>
+                   <button onclick="addToCart('Banana Chips',150,'BananaChips','https://i.ibb.co/Zp47rMKM/69c9fb98-c69a-4354-bb20-78a7ab9bccf1-r1-c2.jpg')" class="order-btn">Add to Cart</button>
                 </div>
-               <button onclick="addToCart('Murukku',150,'Murukku','https://i.ibb.co/RpFxkTZK/69c9fb98-c69a-4354-bb20-78a7ab9bccf1-r1-c1.jpg')" class="order-btn">Add to Cart</button>
+
+                <!-- Product 3: Joystick -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.ibb.co/ycx85w7Y/5f710085-b22f-4622-b498-50ab6c53aa5a.jpg" alt="Joystick">
+                    </div>
+                    <h3>Joystick</h3>
+                    <p class="price">₹150/kg</p>
+                    <div class="qty-controls">
+                        <button class="qty-btn" onclick="changeQty('Joystick', -1)">-</button>
+                        <span id="qty-Joystick">5</span>
+                        <button class="qty-btn" onclick="changeQty('Joystick', 1)">+</button>
+                    </div>
+                    <button onclick="addToCart('Joystick',150,'Joystick','https://i.ibb.co/ycx85w7Y/5f710085-b22f-4622-b498-50ab6c53aa5a.jpg')" class="order-btn">Add to Cart</button>
+                </div>
+
+                <!-- Product 4: Tapioca Chips -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.ibb.co/PsDT9sby/69c9fb98-c69a-4354-bb20-78a7ab9bccf1-r1-c3.jpg" alt="Tapioca Chips">
+                    </div>
+                    <h3>Tapioca Chips</h3>
+                    <p class="price">₹150/kg</p>
+                    <div class="qty-controls">
+                        <button class="qty-btn" onclick="changeQty('Tapioca', -1)">-</button>
+                        <span id="qty-Tapioca">5</span>
+                        <button class="qty-btn" onclick="changeQty('Tapioca', 1)">+</button>
+                    </div>
+                    <button onclick="addToCart('Tapioca Chips',150,'Tapioca','https://i.ibb.co/PsDT9sby/69c9fb98-c69a-4354-bb20-78a7ab9bccf1-r1-c3.jpg')" class="order-btn">Add to Cart</button>
+                </div>
+
+                 <!-- Special Murukku -->
+                <div class="product-card">
+                    <div class="product-img"><img src="https://i.ibb.co/VWQDkyXZ/7106bb05-ef96-4edb-9aa8-68aa5beeacda.jpg" alt="Special Murukku"></div>
+                    <h3>Special Murukku</h3>
+                    <p>₹150/kg</p>
+                    <div class="qty-controls">
+                        <button class="qty-btn" onclick="changeQty('SpecialMurukku', -1)">-</button>
+                        <span id="qty-SpecialMurukku">5</span>
+                        <button class="qty-btn" onclick="changeQty('SpecialMurukku', 1)">+</button>
+                    </div>
+                    <button onclick="addToCart('Special Murukku',150,'SpecialMurukku','https://i.ibb.co/VWQDkyXZ/7106bb05-ef96-4edb-9aa8-68aa5beeacda.jpg')" class="order-btn">Add to Cart</button>
+                </div>
+                
+                <!-- Cheese Balls -->
+                <div class="product-card">
+                    <div class="product-img"><img src="https://i.ibb.co/5X3VD5xB/69c9fb98-c69a-4354-bb20-78a7ab9bccf1-r2-c2.jpg" alt="Cheese Balls"></div>
+                    <h3>Cheese Balls</h3>
+                    <p>₹150/kg</p>
+                    <div class="qty-controls">
+                        <button class="qty-btn" onclick="changeQty('CheeseBalls', -1)">-</button>
+                        <span id="qty-CheeseBalls">5</span>
+                        <button class="qty-btn" onclick="changeQty('CheeseBalls', 1)">+</button>
+                    </div>
+                   <button onclick="addToCart('Cheese Balls',150,'CheeseBalls','https://i.ibb.co/5X3VD5xB/69c9fb98-c69a-4354-bb20-78a7ab9bccf1-r2-c2.jpg')" class="order-btn">Add to Cart</button>
+                </div>
             </div>
 
-            <!-- Product 2: Banana Chips -->
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://i.ibb.co/Zp47rMKM/69c9fb98-c69a-4354-bb20-78a7ab9bccf1-r1-c2.jpg" alt="Banana Chips">
-                </div>
-                <h3>Banana Chips</h3>
-                <p class="price">₹150/kg</p>
-                <div class="qty-controls">
-                    <button class="qty-btn" onclick="changeQty('BananaChips', -1)">-</button>
-                    <span id="qty-BananaChips">1</span>
-                    <button class="qty-btn" onclick="changeQty('BananaChips', 1)">+</button>
-                </div>
-               <button onclick="addToCart('Banana Chips',150,'BananaChips','https://i.ibb.co/Zp47rMKM/69c9fb98-c69a-4354-bb20-78a7ab9bccf1-r1-c2.jpg')" class="order-btn">Add to Cart</button>
+            <div class="place-order-wrapper">
+                <a href="cart.html" class="order-now-btn">
+                    Place Your Order 🛒
+                </a>
             </div>
+        </section>
 
-            <!-- Product 3: Joystick -->
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://i.ibb.co/ycx85w7Y/5f710085-b22f-4622-b498-50ab6c53aa5a.jpg" alt="Joystick">
-                </div>
-                <h3>Joystick</h3>
-                <p class="price">₹150/kg</p>
-                <div class="qty-controls">
-                    <button class="qty-btn" onclick="changeQty('Joystick', -1)">-</button>
-                    <span id="qty-Joystick">1</span>
-                    <button class="qty-btn" onclick="changeQty('Joystick', 1)">+</button>
-                </div>
-                <button onclick="addToCart('Joystick',150,'Joystick','https://i.ibb.co/ycx85w7Y/5f710085-b22f-4622-b498-50ab6c53aa5a.jpg')" class="order-btn">Add to Cart</button>
+        <section class="contact-section" id="contact">
+            <h2>Get In Touch</h2>
+            <div style="margin: 20px 0;">
+                <p>📞 +91 9744390615 | +91 9744390657</p>
+                <p>📧 shahid321bila@gmail.com</p>
+                <p>📍 Kottayam, Kerala</p>
             </div>
+            <a href="https://maps.app.goo.gl/CZnFcyiJfntQVXqbA" class="order-btn" target="_blank" style="background: white;">View Location</a>
+        </section>
+    </div>
 
-            <!-- Product 4: Tapioca Chips -->
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://i.ibb.co/PsDT9sby/69c9fb98-c69a-4354-bb20-78a7ab9bccf1-r1-c3.jpg" alt="Tapioca Chips">
-                </div>
-                <h3>Tapioca Chips</h3>
-                <p class="price">₹150/kg</p>
-                <div class="qty-controls">
-                    <button class="qty-btn" onclick="changeQty('Tapioca', -1)">-</button>
-                    <span id="qty-Tapioca">1</span>
-                    <button class="qty-btn" onclick="changeQty('Tapioca', 1)">+</button>
-                </div>
-                <button onclick="addToCart('Tapioca Chips',150,'Tapioca','https://i.ibb.co/PsDT9sby/69c9fb98-c69a-4354-bb20-78a7ab9bccf1-r1-c3.jpg')" class="order-btn">Add to Cart</button>
-            </div>
-
-             <!-- Special Murukku -->
-            <div class="product-card">
-                <div class="product-img"><img src="https://i.ibb.co/VWQDkyXZ/7106bb05-ef96-4edb-9aa8-68aa5beeacda.jpg" alt="Special Murukku"></div>
-                <h3>Special Murukku</h3>
-                <p>₹150/kg</p>
-                <div class="qty-controls">
-                    <button class="qty-btn" onclick="changeQty('SpecialMurukku', -1)">-</button>
-                    <span id="qty-SpecialMurukku">1</span>
-                    <button class="qty-btn" onclick="changeQty('SpecialMurukku', 1)">+</button>
-                </div>
-                <button onclick="addToCart('Special Murukku',150,'SpecialMurukku','https://i.ibb.co/VWQDkyXZ/7106bb05-ef96-4edb-9aa8-68aa5beeacda.jpg')" class="order-btn">Add to Cart</button>
-            </div>
-            
-            <!-- Cheese Balls -->
-            <div class="product-card">
-                <div class="product-img"><img src="https://i.ibb.co/5X3VD5xB/69c9fb98-c69a-4354-bb20-78a7ab9bccf1-r2-c2.jpg" alt="Cheese Balls"></div>
-                <h3>Cheese Balls</h3>
-                <p>₹150/kg</p>
-                <div class="qty-controls">
-                    <button class="qty-btn" onclick="changeQty('CheeseBalls', -1)">-</button>
-                    <span id="qty-CheeseBalls">1</span>
-                    <button class="qty-btn" onclick="changeQty('CheeseBalls', 1)">+</button>
-                </div>
-               <button onclick="addToCart('Cheese Balls',150,'CheeseBalls','https://i.ibb.co/5X3VD5xB/69c9fb98-c69a-4354-bb20-78a7ab9bccf1-r2-c2.jpg')" class="order-btn">Add to Cart</button>
-            </div>
-        </div>
-
-       <!-- Place Order ബട്ടൺ സെന്ററിൽ വരാൻ -->
-        <div class="place-order-wrapper">
-            <a href="cart.html" class="order-now-btn">
-                Place Your Order 🛒
-            </a>
-        </div>
-    </section>
-<section class="contact-section" id="contact">
-        <h2>Get In Touch</h2>
-        <div style="margin: 20px 0;">
-            <p>📞 +91 9744390615 | +91 9744390657</p>
-            <p>📧 shahid321bila@gmail.com</p>
-            <p>📍 Kottayam, Kerala</p>
-        </div>
-        <a href="https://maps.app.goo.gl/CZnFcyiJfntQVXqbA" class="order-btn" target="_blank" style="background: white;">View Location</a>
-    </section>
 <script>
-// ഓരോ product inte quantity store cheyyan
+// --- SPLASH SCREEN LOGIC ---
+window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        const splash = document.getElementById('splash-screen');
+        splash.classList.add('splash-hidden');
+        
+        const mainContent = document.getElementById('main-content');
+        mainContent.style.filter = 'none';
+    }, 2500); 
+});
+
+// --- QUANTITY & CART LOGIC ---
 let itemQuantities = {};
 
-// ➕➖ quantity change
 function changeQty(id, change) {
-    if (!itemQuantities[id]) itemQuantities[id] = 1;
+    if (!itemQuantities[id]) itemQuantities[id] = 5;
 
     itemQuantities[id] += change;
 
-    if (itemQuantities[id] < 1) itemQuantities[id] = 1;
+    if (itemQuantities[id] < 5) {
+        itemQuantities[id] = 5;
+        alert("മിനിമം ഓർഡർ 5 കിലോ ആണ്!");
+    }
 
     document.getElementById('qty-' + id).innerText = itemQuantities[id];
 }
 
-// 🛒 add to cart (WITH IMAGE)
 function addToCart(name, price, id, img) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
     let qty = parseInt(document.getElementById('qty-' + id).innerText);
+
+    if (qty < 5) {
+        alert("ക്ഷമിക്കണം, ഈ ഉൽപ്പന്നം മിനിമം 5 കിലോ എങ്കിലും ഓർഡർ ചെയ്യണം.");
+        return;
+    }
 
     let existingItem = cart.find(p => p.name === name);
 
@@ -323,17 +419,15 @@ function addToCart(name, price, id, img) {
             name: name,
             price: price,
             qty: qty,
-            img: img // ✅ image save
+            img: img 
         });
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
-
     alert(qty + " kg " + name + " added to cart!");
 
-    // reset qty
-    document.getElementById('qty-' + id).innerText = 1;
-    itemQuantities[id] = 1;
+    document.getElementById('qty-' + id).innerText = 5;
+    itemQuantities[id] = 5;
 }
 </script>   
 
